@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700&display=swap');
-.body {
+body {
     display: flex;
     flex: content;
     flex-direction: column;
@@ -19,7 +19,7 @@
     margin-top: 10px;
 }
 .button {
-    border: "1px";
+    border-width: 1px;
     border-radius: 10px;
     height: 50px;
     width: 50px;
@@ -27,7 +27,10 @@
     background: none;
     font-size: 35px;
     font-family: "Roboto", sans-serif;
-    box-shadow: black 20px;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.4);
+}
+.button:active {
+    box-shadow: none;
 }
 h1 {
     font-family: "Roboto", sans-serif;
@@ -37,4 +40,21 @@ h1 {
 }
 .O { 
     color: crimson;
+}
+.restart {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    background: none;
+    border-width: 1px;
+    border-radius: 10px;
+    border-color: black;
+    box-shadow: 2px 2px 0px 0px rgba(0, 0, 0, 0.4);
+    width: 150px;
+    height: 50px;
+    font-size: large;
+    font-family: "Roboto", sans-serif;
+}
+.restart:active {
+    box-shadow: none;
+    color: #000;
 }
