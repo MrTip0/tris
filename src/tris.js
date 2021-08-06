@@ -17,8 +17,8 @@ function gioco(numero) {
             finito = true
             scritta = "Parità"
         }
+        creaTavolo()
     }
-    creaTavolo()
 }
 
 function creaTavolo() {
@@ -34,6 +34,12 @@ function creaTavolo() {
         }
     } else {
         text.innerText = scritta
+        var b = document.createElement("button")
+        b.innerText = "Restart"
+        b.addEventListener("click", ()=>restart())
+        b.setAttribute("class", "restart")
+        b.setAttribute("id", "restart")
+        board.appendChild(b)
     }
 }
 
@@ -55,4 +61,12 @@ function checkWin(){
             finito = true
         }
     });
+}
+function restart() {
+    tavolo = ["", "", "", "", "", "", "", "", ""]
+    xTurn = true
+    turno = 0
+    finito = false
+    scritta = ""
+    creaTavolo()
 }
