@@ -5,6 +5,7 @@ var xTurn = true
 var turno = 0
 var finito = false
 var scritta = ""
+var winner = []
 creaTavolo()
 
 function gioco(numero) {
@@ -23,16 +24,15 @@ function gioco(numero) {
 
 function creaTavolo() {
     board.innerHTML = ""
-    if (!finito) {
-        for (let i = 0; i < 9; i++) {
-            let a = document.createElement("button")
-            a.addEventListener("click", ()=> gioco(i))
-            a.innerText = tavolo[i]
-            a.setAttribute("class", `button ${a.innerText == 'X' ? 'X': 'O'}`)
-            board.appendChild(a)
-            text.innerText = `Turn: ${xTurn ? "X" : "O"}`
-        }
-    } else {
+    for (let i = 0; i < 9; i++) {
+        let a = document.createElement("button")
+        a.addEventListener("click", ()=> gioco(i))
+        a.innerText = tavolo[i]
+        a.setAttribute("class", `button${a.innerText == 'X' ? ' X': a.innerText == 'O' ? ' O' : ''}${winner.includes(i) ? ' winner': ''}`)
+        board.appendChild(a)
+        text.innerText = `Turn: ${xTurn ? "X" : "O"}`
+    }
+    if (finito) {
         text.innerText = scritta
         var b = document.createElement("button")
         b.innerText = "Restart"
@@ -59,6 +59,7 @@ function checkWin(){
         if (act != "" && act == tavolo[value[1]] && act == tavolo[value[2]]) {
             scritta = `The winner is ${act}`
             finito = true
+            winner = value
         }
     });
 }
@@ -68,5 +69,6 @@ function restart() {
     turno = 0
     finito = false
     scritta = ""
+    winner = []
     creaTavolo()
 }
